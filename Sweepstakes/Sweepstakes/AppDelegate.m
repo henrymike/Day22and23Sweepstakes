@@ -16,6 +16,24 @@
 @implementation AppDelegate
 
 
+#pragma mark - Parse Data Methods
+
+- (void)getEntriesData {
+    NSLog(@"Get data");
+    PFQuery *data = [PFQuery queryWithClassName:@"Entries"];
+    [data findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        // could reload the view here when it's done getting items
+        _entriesArray = objects;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"gotEntriesNotification" object:nil];
+        NSLog(@"ADArray:%@",_entriesArray);
+        NSLog(@"Got: %li",objects.count);
+        NSLog(@"LDArrayCount:%li",_entriesArray.count);
+        for (PFObject *logItem in objects) {
+            NSLog(@"Name:%@ Email:%@",[logItem objectForKey:@"firstName"],[logItem objectForKey:@"email"]);
+        }
+    }];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Initialize Parse.
     [Parse setApplicationId:@"lkLnKy2XReXkPAhQpqIviuoR3YeYJkEehs8Xgfny"
@@ -23,6 +41,8 @@
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    _entriesArray = [[NSArray alloc] init];
     return YES;
 }
 
