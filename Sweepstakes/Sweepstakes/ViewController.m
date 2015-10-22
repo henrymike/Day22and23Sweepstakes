@@ -17,16 +17,17 @@
 @property (nonatomic, weak)     IBOutlet    UITableView     *entriesTableView;
 @property (nonatomic, weak)     IBOutlet    UIDatePicker    *minDatePicker;
 @property (nonatomic, weak)     IBOutlet    UIDatePicker    *maxDatePicker;
+@property (nonatomic, weak)     IBOutlet    UIBarButtonItem *winnersBarButtonItem;
 
 
 @end
 
 @implementation ViewController
 
-#pragma mark - Variables
-
-NSDate *minDate = 0;
-NSDate *maxDate = 0;
+//#pragma mark - Variables
+//
+//NSDate *minDate = 0;
+//NSDate *maxDate = 0;
 
 
 #pragma mark - Interactivity Methods
@@ -79,29 +80,46 @@ NSDate *maxDate = 0;
 
 - (PFQuery *)filterWinnersByDate {
     NSLog(@"Date Filter pressed");
-    PFQuery *winnerSearch = [PFQuery queryWithClassName:@"Entries"];
-//    [winnerSearch whereKey:@"winner" greaterThan:@1];
+    PFQuery *dateSearch = [PFQuery queryWithClassName:@"Entries"];
+//    [winnerSearch whereKey:@"winner" greaterThan:@0];
 //    NSLog(@"%@",winnerSearch);
     
-//    PFQuery *minSearch = [PFQuery queryWithClassName:@"Entries"];
-    [winnerSearch whereKey:@"createdAt" greaterThanOrEqualTo:_minDatePicker.date];
-//    PFQuery *maxSearch = [PFQuery queryWithClassName:@"Entries"];
-    [winnerSearch whereKey:@"createdAt" lessThanOrEqualTo:_maxDatePicker.date];
-//    PFQuery *filter = [PFQuery orQueryWithSubqueries:@[winnerSearch,minSearch,maxSearch]];
-    [winnerSearch findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        for (PFObject *entry in objects) {
-            NSLog(@"Date query:%@",entry[@"firstName"]);
+    [dateSearch whereKey:@"createdAt" greaterThanOrEqualTo:_minDatePicker.date];
+    [dateSearch whereKey:@"createdAt" lessThanOrEqualTo:_maxDatePicker.date];
+    [dateSearch findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+//        for (PFObject *entry in objects) {
+//            NSLog(@"Name query:%@",entry[@"firstName"]);
             _appDelegate.entriesArray = objects;
             [_entriesTableView reloadData];
-        }
+//        }
     }];
     
     return 0;
 }
 
-- (IBAction)filterButtonPressed:(id)sender {
+- (IBAction)filterDatePressed:(id)sender {
     [self filterWinnersByDate];
 //    NSLog(@"min:%@, max:%@",minDate, maxDate);
+}
+
+- (IBAction)filerWinnersPressed:(id)sender {
+    if ((_winnersBarButtonItem.title = @"Show Winners")) {
+        PFQuery *winnerSearch = [PFQuery queryWithClassName:@"Entries"];
+        [winnerSearch whereKey:@"winner" greaterThan:@0];
+        [winnerSearch findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            _winnersBarButtonItem.title = @"Show All";
+            _appDelegate.entriesArray = objects;
+            [_entriesTableView reloadData];
+        }];
+    } else {
+        NSLog(@"Else filter");
+        PFQuery *allSearch = [PFQuery queryWithClassName:@"Entries"];
+        [allSearch findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            _appDelegate.entriesArray = objects;
+            _winnersBarButtonItem.title = @"Show Winners";
+            [_entriesTableView reloadData];
+        }];
+    }
 }
 
 
@@ -109,12 +127,12 @@ NSDate *maxDate = 0;
 
 - (IBAction)minDateSelected:(UIDatePicker *)minDatePicker {
 //    NSLog(@"%@",minDatePicker.date);
-    minDate = minDatePicker.date;
+//    minDate = minDatePicker.date;
 }
 
 - (IBAction)maxDateSelected:(UIDatePicker *)maxDatePicker {
 //    NSLog(@"%@",maxDatePicker.date);
-    maxDate = maxDatePicker.date;
+//    maxDate = maxDatePicker.date;
     
 }
 

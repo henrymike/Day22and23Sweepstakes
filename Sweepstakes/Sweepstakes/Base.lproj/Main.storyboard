@@ -150,9 +150,14 @@
                                     <action selector="generateWinnerButtonPressed:" destination="BYZ-38-t0r" id="McG-mi-02H"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Filter" id="sOv-yc-OZX">
+                            <barButtonItem title="Date Filter" id="sOv-yc-OZX">
                                 <connections>
-                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" id="mLq-wU-YIm"/>
+                                    <action selector="filterDatePressed:" destination="BYZ-38-t0r" id="UbB-Em-n8k"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Show Winners" id="clg-o3-cFI">
+                                <connections>
+                                    <action selector="filerWinnersPressed:" destination="BYZ-38-t0r" id="WFN-jw-kHr"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -161,6 +166,7 @@
                         <outlet property="entriesTableView" destination="CuT-Qn-RZJ" id="JGs-um-qPI"/>
                         <outlet property="maxDatePicker" destination="gqS-G3-gJ2" id="kAR-x6-IPv"/>
                         <outlet property="minDatePicker" destination="Hbz-qP-a3X" id="Ybr-Ip-otJ"/>
+                        <outlet property="winnersBarButtonItem" destination="clg-o3-cFI" id="qph-oG-dQR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
