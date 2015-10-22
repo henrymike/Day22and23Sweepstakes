@@ -25,12 +25,12 @@
         // could reload the view here when it's done getting items
         _entriesArray = objects;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"gotEntriesNotification" object:nil];
-        NSLog(@"ADArray:%@",_entriesArray);
-        NSLog(@"Got: %li",objects.count);
-        NSLog(@"LDArrayCount:%li",_entriesArray.count);
-        for (PFObject *logItem in objects) {
-            NSLog(@"Name:%@ Email:%@",[logItem objectForKey:@"firstName"],[logItem objectForKey:@"email"]);
-        }
+//        NSLog(@"ADArray:%@",_entriesArray);
+//        NSLog(@"Got: %li",objects.count);
+//        NSLog(@"LDArrayCount:%li",_entriesArray.count);
+//        for (PFObject *logItem in objects) {
+//            NSLog(@"Name:%@ Email:%@",[logItem objectForKey:@"firstName"],[logItem objectForKey:@"email"]);
+//        }
     }];
 }
 

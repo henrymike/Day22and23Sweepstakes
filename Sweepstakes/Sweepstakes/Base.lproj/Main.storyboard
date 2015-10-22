@@ -91,7 +91,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Entries" id="zjF-76-mfE">
-                        <barButtonItem key="rightBarButtonItem" title="Get Winner" id="202-NI-IyF"/>
+                        <barButtonItem key="rightBarButtonItem" title="Get Winner" id="202-NI-IyF">
+                            <connections>
+                                <action selector="generateWinnerButtonPressed:" destination="BYZ-38-t0r" id="McG-mi-02H"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="entriesTableView" destination="CuT-Qn-RZJ" id="JGs-um-qPI"/>

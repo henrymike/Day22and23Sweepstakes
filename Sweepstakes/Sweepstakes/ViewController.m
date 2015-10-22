@@ -22,26 +22,32 @@
 
 #pragma mark - Interactivity Methods
 
-- (IBAction)generateWinnerButtonPressed:(UIButton *)button {
-    long totalOptions = _appDelegate.entriesArray.count;
-    long randomIndex = arc4random_uniform((uint32_t)totalOptions);
-    NSString *randomWinner = _appDelegate.entriesArray[randomIndex];
-    NSLog(@"Winner is:%@",randomWinner);
+- (IBAction)generateWinnerButtonPressed:(UIBarButtonItem *)button {
+    int randomWinner = arc4random_uniform((uint32_t)_appDelegate.entriesArray.count);
+    NSLog(@"Random Winner:%i",randomWinner);
+    PFObject *winner = [_appDelegate.entriesArray objectAtIndex:randomWinner];
+    NSLog(@"Winner Name is:%@",[NSString stringWithFormat:@"%@",[winner objectForKey:@"firstName"]]);
+    int winCount = [[winner objectForKey:@"winner"] intValue] + 1;
+    NSLog(@"%@ Win Count:%i",[winner objectForKey:@"firstName"],winCount);
     
-    //cannot wire the generate bar button item in storyboard
-//    PFObject *winner = _appDelegate.entriesArray[randomWinner];
+    winner[@"winner"] = [NSNumber numberWithInt:winCount];
+    [winner saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [_entriesTableView reloadData];
+    }];
+
 }
+
 
 #pragma mark - Table View Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"NRIS");
-    NSLog(@"Count:%lu",_appDelegate.entriesArray.count);
+//    NSLog(@"NRIS");
+//    NSLog(@"Count:%lu",_appDelegate.entriesArray.count);
     return _appDelegate.entriesArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"CFRAIP");
+//    NSLog(@"CFRAIP");
     EntriesTableViewCell *cell = (EntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"entriesCell"];
     PFObject *entrant = _appDelegate.entriesArray[indexPath.row];
     cell.fullNameLabel.text = [NSString stringWithFormat:@"%@ %@",[entrant objectForKey:@"firstName"],[entrant objectForKey:@"lastName"]];
