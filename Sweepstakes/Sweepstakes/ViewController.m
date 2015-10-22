@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "EntriesTableViewCell.h"
 #import <Parse/Parse.h>
 
 @interface ViewController ()
@@ -19,6 +20,18 @@
 
 @implementation ViewController
 
+#pragma mark - Interactivity Methods
+
+- (IBAction)generateWinnerButtonPressed:(UIButton *)button {
+    long totalOptions = _appDelegate.entriesArray.count;
+    long randomIndex = arc4random_uniform((uint32_t)totalOptions);
+    NSString *randomWinner = _appDelegate.entriesArray[randomIndex];
+    NSLog(@"Winner is:%@",randomWinner);
+    
+    //cannot wire the generate bar button item in storyboard
+//    PFObject *winner = _appDelegate.entriesArray[randomWinner];
+}
+
 #pragma mark - Table View Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -29,10 +42,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"CFRAIP");
-    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"entriesCell"];
-    PFObject *selectedResult = _appDelegate.entriesArray[indexPath.row];
-    cell.textLabel.text = [selectedResult objectForKey:@"firstName"];
-    cell.detailTextLabel.text = [[selectedResult objectForKey:@"winner"] stringValue];
+    EntriesTableViewCell *cell = (EntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"entriesCell"];
+    PFObject *entrant = _appDelegate.entriesArray[indexPath.row];
+    cell.fullNameLabel.text = [NSString stringWithFormat:@"%@ %@",[entrant objectForKey:@"firstName"],[entrant objectForKey:@"lastName"]];
+    cell.cityStateLabel.text = [NSString stringWithFormat:@"%@, %@",[entrant objectForKey:@"city"],[entrant objectForKey:@"state"]];
+    cell.emailLabel.text = [entrant objectForKey:@"email"];
+    cell.phoneLabel.text = [entrant objectForKey:@"phone"];
+    cell.winCountLabel.text =[NSString stringWithFormat:@"Win Count: %@",[[entrant objectForKey:@"winner"] stringValue]];
+    cell.regDateLabel.text = [entrant objectForKey:@"createdAt"];
     
     return cell;
 }
