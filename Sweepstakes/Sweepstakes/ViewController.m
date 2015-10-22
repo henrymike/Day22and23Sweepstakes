@@ -23,6 +23,12 @@
 
 @implementation ViewController
 
+#pragma mark - Variables
+
+NSDate *minDate = 0;
+NSDate *maxDate = 0;
+
+
 #pragma mark - Interactivity Methods
 
 - (IBAction)generateWinnerButtonPressed:(UIBarButtonItem *)button {
@@ -59,7 +65,7 @@
     cell.emailLabel.text = [entrant objectForKey:@"email"];
     cell.phoneLabel.text = [entrant objectForKey:@"phone"];
     cell.winCountLabel.text =[NSString stringWithFormat:@"Win Count: %@",[[entrant objectForKey:@"winner"] stringValue]];
-    cell.regDateLabel.text = [entrant objectForKey:@"createdAt"];
+    cell.regDateLabel.text = [NSString stringWithFormat:@"%@", entrant.createdAt];
     
     // check for winner and highlight cell if true
     if ([[entrant objectForKey:@"winner"] integerValue] >= 1) {
@@ -74,27 +80,42 @@
 - (PFQuery *)filterWinnersByDate {
     NSLog(@"Date Filter pressed");
     PFQuery *winnerSearch = [PFQuery queryWithClassName:@"Entries"];
-    [winnerSearch whereKey:@"winner" greaterThan:@1];
-    NSLog(@"%@",winnerSearch);
+//    [winnerSearch whereKey:@"winner" greaterThan:@1];
+//    NSLog(@"%@",winnerSearch);
     
+//    PFQuery *minSearch = [PFQuery queryWithClassName:@"Entries"];
+    [winnerSearch whereKey:@"createdAt" greaterThanOrEqualTo:_minDatePicker.date];
+//    PFQuery *maxSearch = [PFQuery queryWithClassName:@"Entries"];
+    [winnerSearch whereKey:@"createdAt" lessThanOrEqualTo:_maxDatePicker.date];
+//    PFQuery *filter = [PFQuery orQueryWithSubqueries:@[winnerSearch,minSearch,maxSearch]];
+    [winnerSearch findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        for (PFObject *entry in objects) {
+            NSLog(@"Date query:%@",entry[@"firstName"]);
+            _appDelegate.entriesArray = objects;
+            [_entriesTableView reloadData];
+        }
+    }];
     
-//    [winnerSearch whereKey:@"winnerDate" greaterThan:[NSDate 11/16/2013 00:00:00.000Z];
     return 0;
 }
 
 - (IBAction)filterButtonPressed:(id)sender {
     [self filterWinnersByDate];
+//    NSLog(@"min:%@, max:%@",minDate, maxDate);
 }
 
 
 #pragma mark - Date Picker View Methods
 
 - (IBAction)minDateSelected:(UIDatePicker *)minDatePicker {
-    NSLog(@"%@",minDatePicker.date);
+//    NSLog(@"%@",minDatePicker.date);
+    minDate = minDatePicker.date;
 }
 
 - (IBAction)maxDateSelected:(UIDatePicker *)maxDatePicker {
-    NSLog(@"%@",maxDatePicker.date);
+//    NSLog(@"%@",maxDatePicker.date);
+    maxDate = maxDatePicker.date;
+    
 }
 
 #pragma mark - Parse Methods

@@ -121,7 +121,7 @@
                                             <outlet property="emailLabel" destination="bHx-hz-h8z" id="B7x-EX-tI6"/>
                                             <outlet property="fullNameLabel" destination="o9F-SX-fbK" id="olF-hh-BmP"/>
                                             <outlet property="phoneLabel" destination="P7U-jh-MqP" id="mWj-04-Fzv"/>
-                                            <outlet property="regDateLabel" destination="mUr-of-YPS" id="OdS-Gs-lds"/>
+                                            <outlet property="regDateLabel" destination="mUr-of-YPS" id="YtJ-Ew-Qke"/>
                                             <outlet property="winCountLabel" destination="qf1-Jp-BCs" id="Ft0-1c-x1d"/>
                                         </connections>
                                     </tableViewCell>
