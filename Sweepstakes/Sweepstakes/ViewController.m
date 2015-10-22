@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong)               AppDelegate     *appDelegate;
 @property (nonatomic, weak)     IBOutlet    UITableView     *entriesTableView;
+@property (nonatomic, weak)     IBOutlet    UIDatePicker    *minDatePicker;
+@property (nonatomic, weak)     IBOutlet    UIDatePicker    *maxDatePicker;
+
 
 @end
 
@@ -31,6 +34,7 @@
     NSLog(@"%@ Win Count:%i",[winner objectForKey:@"firstName"],winCount);
     
     winner[@"winner"] = [NSNumber numberWithInt:winCount];
+    winner[@"winnerDate"] = [NSDate date];
     [winner saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [_entriesTableView reloadData];
     }];
@@ -57,6 +61,7 @@
     cell.winCountLabel.text =[NSString stringWithFormat:@"Win Count: %@",[[entrant objectForKey:@"winner"] stringValue]];
     cell.regDateLabel.text = [entrant objectForKey:@"createdAt"];
     
+    // check for winner and highlight cell if true
     if ([[entrant objectForKey:@"winner"] integerValue] >= 1) {
         cell.backgroundColor = [UIColor greenColor];
     } else {
@@ -66,11 +71,31 @@
     return cell;
 }
 
-//- (void)highlightWinnerCell {
-//    PFObject *winningEntrant = _appDelegate.entriesArray[indexPath.row];
-//    
-//}
+- (PFQuery *)filterWinnersByDate {
+    NSLog(@"Date Filter pressed");
+    PFQuery *winnerSearch = [PFQuery queryWithClassName:@"Entries"];
+    [winnerSearch whereKey:@"winner" greaterThan:@1];
+    NSLog(@"%@",winnerSearch);
+    
+    
+//    [winnerSearch whereKey:@"winnerDate" greaterThan:[NSDate 11/16/2013 00:00:00.000Z];
+    return 0;
+}
 
+- (IBAction)filterButtonPressed:(id)sender {
+    [self filterWinnersByDate];
+}
+
+
+#pragma mark - Date Picker View Methods
+
+- (IBAction)minDateSelected:(UIDatePicker *)minDatePicker {
+    NSLog(@"%@",minDatePicker.date);
+}
+
+- (IBAction)maxDateSelected:(UIDatePicker *)maxDatePicker {
+    NSLog(@"%@",maxDatePicker.date);
+}
 
 #pragma mark - Parse Methods
 

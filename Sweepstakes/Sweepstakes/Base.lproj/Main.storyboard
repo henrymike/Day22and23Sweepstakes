@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Entries-->
@@ -17,51 +18,97 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CuT-Qn-RZJ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fB9-HD-4Cj">
+                                <rect key="frame" x="0.0" y="52" width="600" height="240"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="Hbz-qP-a3X">
+                                        <rect key="frame" x="20" y="20" width="220" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="R5L-QP-2dH"/>
+                                        </constraints>
+                                        <date key="date" timeIntervalSinceReferenceDate="467234513.72789598">
+                                            <!--2015-10-22 19:21:53 +0000-->
+                                        </date>
+                                        <date key="minimumDate" timeIntervalSinceReferenceDate="441802800">
+                                            <!--2015-01-01 11:00:00 +0000-->
+                                        </date>
+                                        <date key="maximumDate" timeIntervalSinceReferenceDate="478479600">
+                                            <!--2016-02-29 23:00:00 +0000-->
+                                        </date>
+                                        <connections>
+                                            <action selector="minDateSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="y1B-t7-TVN"/>
+                                        </connections>
+                                    </datePicker>
+                                    <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="gqS-G3-gJ2">
+                                        <rect key="frame" x="360" y="20" width="220" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="meT-Bg-MMQ"/>
+                                        </constraints>
+                                        <date key="date" timeIntervalSinceReferenceDate="467234513.72789598">
+                                            <!--2015-10-22 19:21:53 +0000-->
+                                        </date>
+                                        <date key="minimumDate" timeIntervalSinceReferenceDate="441802800">
+                                            <!--2015-01-01 11:00:00 +0000-->
+                                        </date>
+                                        <date key="maximumDate" timeIntervalSinceReferenceDate="478479600">
+                                            <!--2016-02-29 23:00:00 +0000-->
+                                        </date>
+                                        <connections>
+                                            <action selector="maxDateSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="wdj-OM-c9l"/>
+                                        </connections>
+                                    </datePicker>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="600" id="Tnw-m8-Kwk"/>
+                                    <constraint firstItem="Hbz-qP-a3X" firstAttribute="leading" secondItem="fB9-HD-4Cj" secondAttribute="leading" constant="20" id="UGI-85-rjt"/>
+                                    <constraint firstItem="gqS-G3-gJ2" firstAttribute="top" secondItem="fB9-HD-4Cj" secondAttribute="top" constant="20" id="YeO-25-Te9"/>
+                                    <constraint firstItem="Hbz-qP-a3X" firstAttribute="top" secondItem="fB9-HD-4Cj" secondAttribute="top" constant="20" id="fIG-WL-nzH"/>
+                                    <constraint firstItem="gqS-G3-gJ2" firstAttribute="leading" secondItem="Hbz-qP-a3X" secondAttribute="trailing" constant="120" id="iLE-bA-oSj"/>
+                                    <constraint firstAttribute="trailing" secondItem="gqS-G3-gJ2" secondAttribute="trailing" constant="20" id="yDK-gv-wRl"/>
                                 </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CuT-Qn-RZJ">
+                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="entriesCell" rowHeight="75" id="ekh-lV-XP6" customClass="EntriesTableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="75"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="entriesCell" rowHeight="75" id="TuR-ah-rDX" customClass="EntriesTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ekh-lV-XP6" id="jUI-jx-maP">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TuR-ah-rDX" id="2yW-kT-qTH">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pz5-3e-lsP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9F-SX-fbK">
                                                     <rect key="frame" x="8" y="8" width="153" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City, State" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ko-GA-UJf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City, State" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obT-wQ-FNu">
                                                     <rect key="frame" x="8" y="26" width="153" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ina-21-SVa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-hz-h8z">
                                                     <rect key="frame" x="251" y="8" width="153" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Winner Count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WV-6b-D1z">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Winner Count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qf1-Jp-BCs">
                                                     <rect key="frame" x="423" y="8" width="153" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Registration Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPT-bg-g6F">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Registration Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUr-of-YPS">
                                                     <rect key="frame" x="423" y="26" width="153" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-LQ-KwX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7U-jh-MqP">
                                                     <rect key="frame" x="251" y="26" width="153" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -70,12 +117,12 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="cityStateLabel" destination="0ko-GA-UJf" id="xHA-P4-OnX"/>
-                                            <outlet property="emailLabel" destination="Ina-21-SVa" id="R9g-2y-ReR"/>
-                                            <outlet property="fullNameLabel" destination="pz5-3e-lsP" id="5dU-4j-VBI"/>
-                                            <outlet property="phoneLabel" destination="v5a-LQ-KwX" id="6mp-OI-XNO"/>
-                                            <outlet property="regDateLabel" destination="qPT-bg-g6F" id="EAn-9T-g69"/>
-                                            <outlet property="winCountLabel" destination="2WV-6b-D1z" id="MZv-jG-Qy5"/>
+                                            <outlet property="cityStateLabel" destination="obT-wQ-FNu" id="owa-M9-Kif"/>
+                                            <outlet property="emailLabel" destination="bHx-hz-h8z" id="B7x-EX-tI6"/>
+                                            <outlet property="fullNameLabel" destination="o9F-SX-fbK" id="olF-hh-BmP"/>
+                                            <outlet property="phoneLabel" destination="P7U-jh-MqP" id="mWj-04-Fzv"/>
+                                            <outlet property="regDateLabel" destination="mUr-of-YPS" id="OdS-Gs-lds"/>
+                                            <outlet property="winCountLabel" destination="qf1-Jp-BCs" id="Ft0-1c-x1d"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -88,19 +135,32 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CuT-Qn-RZJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="4vt-jw-gLF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fB9-HD-4Cj" secondAttribute="trailing" constant="-20" id="D6A-DO-KB2"/>
+                            <constraint firstItem="fB9-HD-4Cj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="GLx-ag-yT3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CuT-Qn-RZJ" secondAttribute="trailing" constant="-20" id="GiM-1U-FnW"/>
-                            <constraint firstItem="CuT-Qn-RZJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="vxI-pV-ccu"/>
+                            <constraint firstItem="CuT-Qn-RZJ" firstAttribute="top" secondItem="fB9-HD-4Cj" secondAttribute="bottom" constant="8" id="N4K-P2-liT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CuT-Qn-RZJ" secondAttribute="bottom" id="WkG-4X-a2g"/>
+                            <constraint firstItem="fB9-HD-4Cj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-12" id="dhd-G9-Qsp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Entries" id="zjF-76-mfE">
-                        <barButtonItem key="rightBarButtonItem" title="Get Winner" id="202-NI-IyF">
-                            <connections>
-                                <action selector="generateWinnerButtonPressed:" destination="BYZ-38-t0r" id="McG-mi-02H"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Get Winner" id="202-NI-IyF">
+                                <connections>
+                                    <action selector="generateWinnerButtonPressed:" destination="BYZ-38-t0r" id="McG-mi-02H"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Filter" id="sOv-yc-OZX">
+                                <connections>
+                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" id="mLq-wU-YIm"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="entriesTableView" destination="CuT-Qn-RZJ" id="JGs-um-qPI"/>
+                        <outlet property="maxDatePicker" destination="gqS-G3-gJ2" id="kAR-x6-IPv"/>
+                        <outlet property="minDatePicker" destination="Hbz-qP-a3X" id="Ybr-Ip-otJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
