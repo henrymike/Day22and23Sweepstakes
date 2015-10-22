@@ -57,8 +57,19 @@
     cell.winCountLabel.text =[NSString stringWithFormat:@"Win Count: %@",[[entrant objectForKey:@"winner"] stringValue]];
     cell.regDateLabel.text = [entrant objectForKey:@"createdAt"];
     
+    if ([[entrant objectForKey:@"winner"] integerValue] >= 1) {
+        cell.backgroundColor = [UIColor greenColor];
+    } else {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+    
     return cell;
 }
+
+//- (void)highlightWinnerCell {
+//    PFObject *winningEntrant = _appDelegate.entriesArray[indexPath.row];
+//    
+//}
 
 
 #pragma mark - Parse Methods

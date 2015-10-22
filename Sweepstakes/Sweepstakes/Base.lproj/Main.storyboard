@@ -20,6 +20,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CuT-Qn-RZJ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="600" id="Tnw-m8-Kwk"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="entriesCell" rowHeight="75" id="ekh-lV-XP6" customClass="EntriesTableViewCell">
                                         <rect key="frame" x="0.0" y="92" width="600" height="75"/>
@@ -86,7 +89,6 @@
                         <constraints>
                             <constraint firstItem="CuT-Qn-RZJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="4vt-jw-gLF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CuT-Qn-RZJ" secondAttribute="trailing" constant="-20" id="GiM-1U-FnW"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CuT-Qn-RZJ" secondAttribute="bottom" id="Tf7-wm-NRF"/>
                             <constraint firstItem="CuT-Qn-RZJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="vxI-pV-ccu"/>
                         </constraints>
                     </view>
