@@ -144,6 +144,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Entries" id="zjF-76-mfE">
+                        <barButtonItem key="leftBarButtonItem" title="Entrant" id="fDx-wS-nmz">
+                            <connections>
+                                <segue destination="l7m-OX-awt" kind="show" id="Nc3-b4-z5n"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Get Winner" id="202-NI-IyF">
                                 <connections>
@@ -172,6 +177,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1057" y="294"/>
+        </scene>
+        <!--Entrant View Controller-->
+        <scene sceneID="AHn-GK-Zlw">
+            <objects>
+                <viewController id="l7m-OX-awt" customClass="EntrantViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6rY-O9-Bnf"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Xj-97-9xu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ftz-Xg-El5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hdj-fn-lPu">
+                                <rect key="frame" x="20" y="72" width="194" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M0x-qp-Dof">
+                                <rect key="frame" x="240" y="72" width="194" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nAa-If-1l6">
+                                <rect key="frame" x="20" y="110" width="194" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f5M-eA-b4V">
+                                <rect key="frame" x="240" y="110" width="194" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="afm-rk-Eeg">
+                                <rect key="frame" x="20" y="148" width="194" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S18-Ui-ouf">
+                                <rect key="frame" x="240" y="148" width="194" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UA5-4b-ecq">
+                                <rect key="frame" x="179" y="204" width="101" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="l7m-OX-awt" eventType="touchUpInside" id="JKV-2I-jGO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="cityTextField" destination="nAa-If-1l6" id="2Uq-aU-ZLg"/>
+                        <outlet property="emailTextField" destination="afm-rk-Eeg" id="hbP-fV-hZd"/>
+                        <outlet property="firstNameTextField" destination="Hdj-fn-lPu" id="fWj-7w-GEn"/>
+                        <outlet property="lastNameTextField" destination="M0x-qp-Dof" id="ocF-xn-MCw"/>
+                        <outlet property="phoneTextField" destination="S18-Ui-ouf" id="cRU-lx-8ro"/>
+                        <outlet property="stateTextField" destination="f5M-eA-b4V" id="hyB-fV-0TS"/>
+                        <outlet property="submitButton" destination="UA5-4b-ecq" id="fbg-AH-mM2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="udi-9d-N8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1718" y="294"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mOw-Jy-EFl">

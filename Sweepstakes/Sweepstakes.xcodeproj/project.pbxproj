@@ -15,6 +15,7 @@
 		5513C0081BD803E000B6946C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5513C0071BD803E000B6946C /* Assets.xcassets */; };
 		5513C00B1BD803E000B6946C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5513C0091BD803E000B6946C /* LaunchScreen.storyboard */; };
 		5513C0171BD8754200B6946C /* EntriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5513C0161BD8754200B6946C /* EntriesTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		5566E3021BDA8988000ED036 /* EntrantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5566E3011BDA8988000ED036 /* EntrantViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		5513C00C1BD803E000B6946C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5513C0151BD8754200B6946C /* EntriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesTableViewCell.h; sourceTree = "<group>"; };
 		5513C0161BD8754200B6946C /* EntriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesTableViewCell.m; sourceTree = "<group>"; };
+		5566E3001BDA8988000ED036 /* EntrantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrantViewController.h; sourceTree = "<group>"; };
+		5566E3011BDA8988000ED036 /* EntrantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrantViewController.m; sourceTree = "<group>"; };
 		937B10035E782AD00DD7F444 /* libPods-Sweepstakes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sweepstakes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8C5E236EA62EE1AECBC00BE /* Pods-Sweepstakes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sweepstakes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sweepstakes/Pods-Sweepstakes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +75,8 @@
 				5513BFFF1BD803E000B6946C /* AppDelegate.m */,
 				5513C0011BD803E000B6946C /* ViewController.h */,
 				5513C0021BD803E000B6946C /* ViewController.m */,
+				5566E3001BDA8988000ED036 /* EntrantViewController.h */,
+				5566E3011BDA8988000ED036 /* EntrantViewController.m */,
 				5513C0041BD803E000B6946C /* Main.storyboard */,
 				5513C0151BD8754200B6946C /* EntriesTableViewCell.h */,
 				5513C0161BD8754200B6946C /* EntriesTableViewCell.m */,
@@ -230,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5513C0031BD803E000B6946C /* ViewController.m in Sources */,
+				5566E3021BDA8988000ED036 /* EntrantViewController.m in Sources */,
 				5513C0001BD803E000B6946C /* AppDelegate.m in Sources */,
 				5513C0171BD8754200B6946C /* EntriesTableViewCell.m in Sources */,
 				5513BFFD1BD803E000B6946C /* main.m in Sources */,
