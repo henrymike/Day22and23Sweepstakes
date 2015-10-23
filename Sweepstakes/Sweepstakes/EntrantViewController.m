@@ -31,6 +31,24 @@
     [self addNewEntry];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == _firstNameTextField) {
+        [_lastNameTextField becomeFirstResponder];
+    } else if (textField == _lastNameTextField) {
+            [_cityTextField becomeFirstResponder];
+    } else if (textField == _cityTextField) {
+        [_stateTextField becomeFirstResponder];
+    } else if (textField == _stateTextField) {
+        [_emailTextField becomeFirstResponder];
+    } else if (textField == _emailTextField) {
+        [_phoneTextField becomeFirstResponder];
+    } else {
+        [textField resignFirstResponder];
+    }
+    return true;
+}
+
+
 #pragma mark - Parse Methods
 
 - (void)addNewEntry {

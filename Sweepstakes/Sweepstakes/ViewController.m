@@ -103,7 +103,8 @@
 }
 
 - (IBAction)filerWinnersPressed:(id)sender {
-    if ((_winnersBarButtonItem.title = @"Show Winners")) {
+    if (([_winnersBarButtonItem.title isEqualToString:@"Show Winners"])) {
+        NSLog(@"Winners filter");
         PFQuery *winnerSearch = [PFQuery queryWithClassName:@"Entries"];
         [winnerSearch whereKey:@"winner" greaterThan:@0];
         [winnerSearch findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
