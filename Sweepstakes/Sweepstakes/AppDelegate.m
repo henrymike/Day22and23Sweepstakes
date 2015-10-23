@@ -21,6 +21,14 @@
 - (void)getEntriesData {
     NSLog(@"Get data");
     PFQuery *data = [PFQuery queryWithClassName:@"Entries"];
+    [data addAscendingOrder:@"firstName"];
+//    if ([_sortString isEqualToString:@""]) {
+//        [data addAscendingOrder:@"firstName"];
+//    } else {
+////        [data addAscendingOrder:@[NSString stringWithFormat:@"\"%@\"",_sortString]];
+////        [data addAscendingOrder:@"%@",_sortString];
+//    }
+
     [data findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         // could reload the view here when it's done getting items
         _entriesArray = objects;

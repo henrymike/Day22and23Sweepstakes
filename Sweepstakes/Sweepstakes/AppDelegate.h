@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIWindow  *window;
 @property (nonatomic, strong) NSArray   *entriesArray;
+@property (nonatomic, strong) NSString  *sortString;
 
 
 - (void)getEntriesData;

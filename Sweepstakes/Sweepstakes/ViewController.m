@@ -13,12 +13,12 @@
 
 @interface ViewController ()
 
-@property (nonatomic, strong)               AppDelegate     *appDelegate;
-@property (nonatomic, weak)     IBOutlet    UITableView     *entriesTableView;
-@property (nonatomic, weak)     IBOutlet    UIDatePicker    *minDatePicker;
-@property (nonatomic, weak)     IBOutlet    UIDatePicker    *maxDatePicker;
-@property (nonatomic, weak)     IBOutlet    UIBarButtonItem *winnersBarButtonItem;
-
+@property (nonatomic, strong)               AppDelegate         *appDelegate;
+@property (nonatomic, weak)     IBOutlet    UITableView         *entriesTableView;
+@property (nonatomic, weak)     IBOutlet    UIDatePicker        *minDatePicker;
+@property (nonatomic, weak)     IBOutlet    UIDatePicker        *maxDatePicker;
+@property (nonatomic, weak)     IBOutlet    UIBarButtonItem     *winnersBarButtonItem;
+@property (nonatomic, weak)     IBOutlet    UISegmentedControl  *sortSegmentedControl;
 
 @end
 
@@ -46,6 +46,21 @@
         [_entriesTableView reloadData];
     }];
 
+}
+
+- (IBAction)sortOrderChanged:(UISegmentedControl *)sortOrder {
+//    NSString *value = [_sortSegmentedControl titleForSegmentAtIndex:sortOrder.selectedSegmentIndex];
+//    NSLog(@"Sort order %@",value);
+    if ((sortOrder.selectedSegmentIndex = 0)) {
+        _appDelegate.sortString = @"firstName";
+    } else if ((sortOrder.selectedSegmentIndex = 1)) {
+        _appDelegate.sortString = @"lastName";
+    } else if ((sortOrder.selectedSegmentIndex = 2)) {
+        _appDelegate.sortString = @"state";
+    }
+    NSLog(@"Print %@",_appDelegate.sortString);
+//    _appDelegate.sortString = value;
+    
 }
 
 
@@ -86,6 +101,7 @@
     
     [dateSearch whereKey:@"createdAt" greaterThanOrEqualTo:_minDatePicker.date];
     [dateSearch whereKey:@"createdAt" lessThanOrEqualTo:_maxDatePicker.date];
+    [dateSearch addAscendingOrder:@"createdAt"];
     [dateSearch findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
 //        for (PFObject *entry in objects) {
 //            NSLog(@"Name query:%@",entry[@"firstName"]);
@@ -107,6 +123,7 @@
         NSLog(@"Winners filter");
         PFQuery *winnerSearch = [PFQuery queryWithClassName:@"Entries"];
         [winnerSearch whereKey:@"winner" greaterThan:@0];
+        [winnerSearch addAscendingOrder:@"firstName"];
         [winnerSearch findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             _winnersBarButtonItem.title = @"Show All";
             _appDelegate.entriesArray = objects;
@@ -115,6 +132,7 @@
     } else {
         NSLog(@"Else filter");
         PFQuery *allSearch = [PFQuery queryWithClassName:@"Entries"];
+        [allSearch addAscendingOrder:@"firstName"];
         [allSearch findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             _appDelegate.entriesArray = objects;
             _winnersBarButtonItem.title = @"Show Winners";
