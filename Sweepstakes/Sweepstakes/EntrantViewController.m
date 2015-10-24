@@ -19,6 +19,7 @@
 @property (nonatomic, weak) IBOutlet UITextField    *emailTextField;
 @property (nonatomic, weak) IBOutlet UITextField    *phoneTextField;
 @property (nonatomic, weak) IBOutlet UIButton       *submitButton;
+@property (nonatomic, weak) IBOutlet UIView         *checkmarkContainerView;
 @property (nonatomic, weak) IBOutlet UIImageView    *checkmarkImageView;
 
 @end
@@ -30,6 +31,8 @@
 - (IBAction)submitButtonPressed:(id)sender {
     NSLog(@"Submit pressed");
 //    [self addNewEntry];
+    _checkmarkContainerView.hidden = false;
+    NSLog(@"Result view");
     [self animatedCheckmark];
 }
 
@@ -53,6 +56,10 @@
 #pragma mark - Display Methods
 
 - (void)animatedCheckmark {
+    // display the container
+    
+    
+    // loop through image array for animation
     NSMutableArray *checkmarkArray = [[NSMutableArray alloc] init];
     for (int i = 1; i < 94; i++) {
         [checkmarkArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"checkmark%i",i]]];
@@ -60,8 +67,11 @@
     _checkmarkImageView.animationImages = checkmarkArray;
     _checkmarkImageView.animationDuration = 4.0;
     _checkmarkImageView.animationRepeatCount = 1;
-    //    _checkmarkImageView = 6;
     [_checkmarkImageView startAnimating];
+    NSLog(@"Animation complete");
+    // hide the container after animation
+    _checkmarkContainerView.hidden = true;
+    NSLog(@"Container hidden");
 }
 
 

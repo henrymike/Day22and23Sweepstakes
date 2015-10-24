@@ -343,14 +343,22 @@
                                     <constraint firstAttribute="bottom" secondItem="qFc-cy-h1J" secondAttribute="bottom" constant="14" id="qNj-c7-v7k"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yfV-XR-h7u">
-                                <rect key="frame" x="42" y="452" width="499" height="128"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfV-XR-h7u">
+                                <rect key="frame" x="0.0" y="191" width="600" height="409"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-8d-K73">
-                                        <rect key="frame" x="130" y="8" width="229" height="112"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-8d-K73">
+                                        <rect key="frame" x="166" y="44" width="269" height="269"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="269" id="f2c-mg-EVd"/>
+                                            <constraint firstAttribute="height" constant="269" id="rMi-cU-xSl"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="YFu-8d-K73" firstAttribute="centerX" secondItem="yfV-XR-h7u" secondAttribute="centerX" id="CHf-vx-fQW"/>
+                                    <constraint firstItem="YFu-8d-K73" firstAttribute="centerY" secondItem="yfV-XR-h7u" secondAttribute="centerY" constant="-26" id="qfY-0D-7HR"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -360,12 +368,16 @@
                             <constraint firstItem="YB1-Kh-wJa" firstAttribute="top" secondItem="6rY-O9-Bnf" secondAttribute="bottom" constant="127" id="NDP-Kg-Kcb"/>
                             <constraint firstItem="Zod-oB-hhs" firstAttribute="top" secondItem="6rY-O9-Bnf" secondAttribute="bottom" constant="127" id="NVj-yu-Sbl"/>
                             <constraint firstItem="YB1-Kh-wJa" firstAttribute="top" secondItem="vr4-Gp-6Ko" secondAttribute="bottom" constant="-1" id="Q9H-Ho-3Oo"/>
+                            <constraint firstItem="yfV-XR-h7u" firstAttribute="leading" secondItem="ftz-Xg-El5" secondAttribute="leadingMargin" constant="-20" id="Qea-lc-ubL"/>
+                            <constraint firstItem="yfV-XR-h7u" firstAttribute="top" secondItem="6rY-O9-Bnf" secondAttribute="bottom" constant="127" id="T2m-1F-RQ7"/>
                             <constraint firstItem="YB1-Kh-wJa" firstAttribute="leading" secondItem="ftz-Xg-El5" secondAttribute="leadingMargin" constant="-20" id="VLW-e7-Cl1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vr4-Gp-6Ko" secondAttribute="trailing" constant="-20" id="cMZ-qU-Z3t"/>
                             <constraint firstItem="vr4-Gp-6Ko" firstAttribute="leading" secondItem="ftz-Xg-El5" secondAttribute="leadingMargin" constant="-20" id="fKz-jb-BDG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zod-oB-hhs" secondAttribute="trailing" constant="-20" id="hH8-Xa-b4H"/>
                             <constraint firstItem="Zod-oB-hhs" firstAttribute="leading" secondItem="ftz-Xg-El5" secondAttribute="leadingMargin" constant="-20" id="l7k-N1-L1c"/>
+                            <constraint firstItem="5Xj-97-9xu" firstAttribute="top" secondItem="yfV-XR-h7u" secondAttribute="bottom" id="lFL-7b-crb"/>
                             <constraint firstItem="YB1-Kh-wJa" firstAttribute="top" secondItem="Zod-oB-hhs" secondAttribute="bottom" constant="-1" id="mSv-5e-LUd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yfV-XR-h7u" secondAttribute="trailing" constant="-20" id="nCf-Tr-P1h"/>
                             <constraint firstItem="5Xj-97-9xu" firstAttribute="top" secondItem="YB1-Kh-wJa" secondAttribute="bottom" constant="156" id="oUg-rG-o5t"/>
                         </constraints>
                         <variation key="default">
@@ -376,6 +388,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="checkmarkContainerView" destination="yfV-XR-h7u" id="mh8-NW-ktO"/>
                         <outlet property="checkmarkImageView" destination="YFu-8d-K73" id="QfN-fG-WD9"/>
                         <outlet property="cityTextField" destination="nAa-If-1l6" id="2Uq-aU-ZLg"/>
                         <outlet property="emailTextField" destination="afm-rk-Eeg" id="hbP-fV-hZd"/>
