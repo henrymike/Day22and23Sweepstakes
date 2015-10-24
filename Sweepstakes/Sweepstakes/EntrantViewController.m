@@ -19,6 +19,7 @@
 @property (nonatomic, weak) IBOutlet UITextField    *emailTextField;
 @property (nonatomic, weak) IBOutlet UITextField    *phoneTextField;
 @property (nonatomic, weak) IBOutlet UIButton       *submitButton;
+@property (nonatomic, weak) IBOutlet UIImageView    *checkmarkImageView;
 
 @end
 
@@ -28,7 +29,8 @@
 
 - (IBAction)submitButtonPressed:(id)sender {
     NSLog(@"Submit pressed");
-    [self addNewEntry];
+//    [self addNewEntry];
+    [self animatedCheckmark];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -47,6 +49,21 @@
     }
     return true;
 }
+
+#pragma mark - Display Methods
+
+- (void)animatedCheckmark {
+    NSMutableArray *checkmarkArray = [[NSMutableArray alloc] init];
+    for (int i = 1; i < 94; i++) {
+        [checkmarkArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"checkmark%i",i]]];
+    }
+    _checkmarkImageView.animationImages = checkmarkArray;
+    _checkmarkImageView.animationDuration = 4.0;
+    _checkmarkImageView.animationRepeatCount = 1;
+    //    _checkmarkImageView = 6;
+    [_checkmarkImageView startAnimating];
+}
+
 
 
 #pragma mark - Parse Methods
