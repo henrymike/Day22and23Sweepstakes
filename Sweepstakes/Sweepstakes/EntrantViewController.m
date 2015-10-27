@@ -68,12 +68,17 @@
     _checkmarkImageView.animationDuration = 4.0;
     _checkmarkImageView.animationRepeatCount = 1;
     [_checkmarkImageView startAnimating];
+    [self performSelector:@selector(animationDidFinish) withObject:nil
+               afterDelay:_checkmarkImageView.animationDuration];
+    
     NSLog(@"Animation complete");
     // hide the container after animation
-    _checkmarkContainerView.hidden = true;
     NSLog(@"Container hidden");
 }
 
+- (void)animationDidFinish {
+    _checkmarkContainerView.hidden = true;
+}
 
 
 #pragma mark - Parse Methods
